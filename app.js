@@ -11,7 +11,9 @@ var express         =   require('express'),
 
 
 
-mongoose.connect("mongodb://localhost/travelogue");
+//mongoose.connect("mongodb://localhost/travelogue");
+mongoose.connect("mongodb://Adish_450:Adishirfan@17@ds125198.mlab.com:25198/travelogue_db");
+
 
 
 // set up our express application
@@ -171,7 +173,7 @@ app.post("/users/:name",function(req,res){
     }
     },function(err,blogs){
         if(err)
-        console.log(err);
+        console.log(err);        
         else
         res.redirect("back");
         
