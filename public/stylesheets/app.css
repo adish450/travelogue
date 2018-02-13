@@ -1,0 +1,63 @@
+
+
+.spc{
+    width:35px;
+    height:35px;
+}
+.mar{
+    margin:5px;
+}
+#q{
+    height:100%;
+    width:100%;
+    position:absolute;
+    
+}
+
+.image { 
+    
+   width: 100%; /* for IE 6 */
+}
+
+h1 { 
+   position: absolute; 
+   top: 300px; 
+   left: 0; 
+   width: 100%;
+   text-align:justify;
+   font-size:10em;
+   
+}  
+   
+
+
+
+#btn{
+    position:absolute;
+    top:500px;
+    margin:auto;
+    width:100%;
+    text-align:center;
+    
+}
+
+.btn-lg {
+    font-size:2.5em;
+    font:Helvatica;
+}
+
+
+#exampleInputEmail1 , #exampleInputPassword1{
+    
+    width:300px;
+}
+
+#div {
+    background:#ffffff;
+    width:40%;
+    height:30%;
+ margin:200px auto;
+ border-radius:5.5px;
+    
+}
+
