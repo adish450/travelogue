@@ -12,7 +12,7 @@ var express         =   require('express'),
 
 
 //mongoose.connect("mongodb://localhost/travelogue");
-mongoose.connect("mongodb://Adish_450:Adishirfan@17@ds125198.mlab.com:25198/travelogue_db");
+mongoose.connect("mongodb://Adish_450:Adish@ds125198.mlab.com:25198/travelogue_db");
 
 
 
