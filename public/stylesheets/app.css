@@ -1,5 +1,8 @@
-
-
+.d-block w-100{
+    width:100%;
+    height:auto;
+    
+}
 .spc{
     width:35px;
     height:35px;
@@ -14,18 +17,14 @@
     
 }
 
-.image { 
-    
-   width: 100%; /* for IE 6 */
-}
 
 h1 { 
    position: absolute; 
-   top: 300px; 
+   top: 40%; 
    left: 0; 
    width: 100%;
    text-align:center;
-   font-size:10em;
+   font-size:10vw;
    
 }  
    
@@ -47,9 +46,19 @@ h1 {
 }
 
 
-#exampleInputEmail1 , #exampleInputPassword1{
+#exampleInputEmail1  {
     
-    width:300px;
+    width:40%;
+}
+
+#exampleInputPassword1{
+    
+    width:40%;
+}
+
+#username{
+    
+    width:40%;
 }
 
 #div {

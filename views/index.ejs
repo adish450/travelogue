@@ -1,47 +1,61 @@
-<% include partials/header %>
-<link rel="stylesheet" href="/stylesheets/app.css">
-<body>
-<nav class="navbar sticky-top navbar-light fixed-top navbar-expand-lg" style=" background-color : #dadfe8;">
-  <a class="navbar-brand" href="#"><img class="spc" src="https://preview.c9users.io/adishirfan17/blog/views/png/030-settings-1.png"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0" action="/Signup" method="GET">
-      <button class="btn btn-outline-success my-2 my-sm-0 mar" type="submit" >Sign Up</button>
-    </form>  
-      
-      <form class="form-inline my-2 my-lg-0" action="/Login" method="GET">
-      <button class="btn btn-outline-success my-2 my-sm-0 mar" type="submit">Login</button>
-    </form>
-  </div>
-</nav>
-<div class="image">
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="https://preview.c9users.io/adishirfan17/blog/pexels-photo-770270.jpeg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://preview.c9users.io/adishirfan17/blog/pexels-photo-206724.jpeg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://preview.c9users.io/adishirfan17/blog/views/pexels-photo-417083.jpeg" alt="Third slide">
-    </div>
-  </div>
-</div>
-<h1>Travelouge</h1>
-</div>
-</nav></span>
-</div>
-</nav>
-<% include partials/footer %>
+    <title>Travelogue</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="/cover.css"  rel="stylesheet">
+     <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+
+  <body class="text-center">
+     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Cover</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="/Signup">Signup</a>
+            <a class="nav-link" href="/Login">Login</a>
+            <a class="nav-link" href="#">Contact Us</a>
+          </nav>
+        </div>
+      </header>
+      <img src=""></img>
+      <div class="container-fluid">
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Travelogue</h1>
+      </main>
+      </div>
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Travelogue</p>
+        </div>
+      </footer>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <img class="rounded-circle" src="https://preview.c9users.io/adishirfan17/blog/IMG_20180314_220125.jpg" alt="Generic placeholder image" width="200" height="200">
+            <h2>Web Developer</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+      </div>
+    </body>
+</html>
