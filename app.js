@@ -7,13 +7,17 @@ var express         =   require('express'),
     flash           =   require('connect-flash'),
     morgan       = require('morgan'),
     cookieParser = require('cookie-parser'),
-    LocalStrategy = require('passport-local').Strategy;
+    LocalStrategy = require('passport-local').Strategy,
+    path    = require("path");
 
-
+var mongoClient = require("mongodb").MongoClient;
+mongoClient.connect("mongodb://adish:l65Jpls5PsSrC3tiwZEbb42seF5qN2YJevahvtCFGNgCxIAXcO5lEHS543DCAatwDChUQL5YGHLTyFljeGv27w%3D%3D@adish.documents.azure.com:10255/?ssl=true", function (err, client) {
+  client.close();
+});
 
 //mongoose.connect("mongodb://localhost/travelogue");
-mongoose.connect("mongodb://Adish_450:Adish@ds125198.mlab.com:25198/travelogue_db");
-
+mongoose.connect("mongodb://adish:l65Jpls5PsSrC3tiwZEbb42seF5qN2YJevahvtCFGNgCxIAXcO5lEHS543DCAatwDChUQL5YGHLTyFljeGv27w%3D%3D@adish.documents.azure.com:10255/?ssl=true");
+mongoose.set('debug',true);
 
 
 // set up our express application
@@ -25,8 +29,6 @@ app.use(bodyParser()); // get information from html forms
 // required for passport
 app.use(bodyParser.urlencoded({extended :true}));
 app.use(bodyParser.json());
-app.use(passport.initialize()); 
-app.use(passport.session());
 app.use(flash());
 
 
@@ -35,10 +37,13 @@ app.use(flash());
 
 app.use(require('express-session')({
     secret : "Adish",
-    resave : false,
-    saveUninitialized : false,
+    resave : true,
+    saveUninitialized : true,
     
 }));
+
+app.use(passport.initialize()); 
+app.use(passport.session());
 
 passport.use(new LocalStrategy(User.authenticate()));
 
@@ -52,6 +57,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 
 app.use(express.static('public'));
 app.set("view engine","ejs");
+app.use(express.static((__dirname + '/views/')));
+
 
 //routes
 
@@ -129,14 +136,15 @@ app.post('/login',
     
     
    
-app.get("/users/:name",function(req,res){
+app.get("/users/:name",isLoggedIn,function(req,res){
     var name = req.params.name;
     console.log(name);
     User.findOne({"username":name},function(err,User){
        if(err)
-       console.log(err);
+       res.redirect('/');
         else
-    res.render("profile",{name:name,User:User});    
+    res.render("profile",{name:name,User:User});
+    console.log(User);
     });
 });
 
@@ -179,9 +187,28 @@ app.post("/users/:name",function(req,res){
         
         
     });
-    
-    
+
 });
+
+app.delete("/users/:name",function(req,res){
+
+    
+    User.update({username:req.params.name},{$pop:{
+        
+        
+        "blog_title": req.body.title,
+        "blog_content": req.body.content
+    }
+    },function(err,blogs){
+        if(err)
+        console.log(err);        
+        else
+        res.redirect("back");
+        
+        
+    });
+    
+});    
 app.listen(process.env.PORT,process.env.IP,function(){
     
     console.log("Server is running !");
@@ -193,10 +220,12 @@ app.listen(process.env.PORT,process.env.IP,function(){
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next){
 
+    console.log(req.isAuthenticated());
     // if user is authenticated in the session, carry on 
     if (req.isAuthenticated()){
          next();
     }
     // if they aren't redirect them to the home page
+    else
     res.redirect('/login');
 }

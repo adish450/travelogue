@@ -1,72 +1,109 @@
-.d-block w-100{
-    width:100%;
-    height:auto;
-    
+body{
+    margin:0;
+    padding:0;
 }
-.spc{
-    width:35px;
-    height:35px;
+
+header{
+      background-image: url("https://preview.c9users.io/adishirfan17/blog/Webp.net-compress-image.jpg");
+      background-size:cover;
+      background-repeat:no-repeat;
+      height:90vh;
+      width:100%;
+      opacity:.75;
 }
-.mar{
-    margin:5px;
-}
-#q{
-    height:100%;
-    width:100%;
+
+
+section {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    flex-wrap:wrap;
+    /*align-items:center;*/
+    color : white;
+    background-color:#2274A5;
+    width :350px;
+    /*height:400px;*/
     position:absolute;
+    right:8%;
+    top: 15%;
+    opacity:0.9;
+    padding:20px;
+    text-align:justify;
+    border-radius:15px;
+    box-shadow:4px 4px #32936F ;
+}
+
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    position:relative;
+}
+
+a{
+    padding:10px;
+    margin:10px;
+    text-decoration:none !important;
+    font-size:20px;
+    color:black;
+}
+
+a:hover {
+    color:white;
+    border-bottom : 1px solid white;
+}
+
+#exampleInputEmail1,#exampleInputPassword1{
+    width: 310px;
+    background-color:white;
+}
+
+.btn {
+    background-color: red;
+}
+
+footer {
+    height:20vh;
+    background-color:black;
+}
+
+#travelogue:hover {
+    color:white;
+    border:none;
     
 }
 
+#emailHelp {
+ color:white !important;
+}
 
-h1 { 
-   position: absolute; 
-   top: 40%; 
-   left: 0; 
-   width: 100%;
-   text-align:center;
-   font-size:10vw;
-   
-}  
-   
-
-
-
-#btn{
-    position:absolute;
-    top:500px;
-    margin:auto;
-    width:100%;
-    text-align:center;
+#login:hover , #signup:hover {
+    border:none;
+    text-align:left;
+    border-bottom : 1px solid white;
     
 }
 
-.btn-lg {
-    font-size:2.5em;
-    font:Helvatica;
+#login ,#signup{
+    /*width:30px;*/
+    margin-bottom:20px;
+    padding-left:0;
 }
 
+.login {
+    margin-bottom:50px;
+}
 
-#exampleInputEmail1  {
+.signup {
+    display:none;
+}
+
+.toggle {
+    display:none;
+}
+
+.nav {
     
-    width:40%;
-}
 
-#exampleInputPassword1{
-    
-    width:40%;
 }
-
-#username{
-    
-    width:40%;
-}
-
-#div {
-    background:#ffffff;
-    width:40%;
-    height:30%;
- margin:200px auto;
- border-radius:5.5px;
-    
-}
-

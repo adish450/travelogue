@@ -1,89 +1,35 @@
-<% include partials/header %>
-<link rel="stylesheet" href="/stylesheets/profile.css">
-<body>
+<html>
+    <head>
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="profile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="profile.js"></script>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Travelogue</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= name %>
-        </a>
-          <div class="dropdown-menu" aria-labelledby="Dropdown">
-          <a class="dropdown-item" href="#">My Blogs</a>
-          <a class="dropdown-item" href="#">My Account</a>
-          <a class="dropdown-item" href="/logout">Logout</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<div class="jumbotron">
-      <div class="container">
-        <h1 class="display-3">Hello, <%= name %> ! </h1>
-        <p>This is your own space where you can share your nostalgic experiences !</p>
-        <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Get Started!
-</button>
-
-<!-- Modal -->
-<form action ="/users/<%= name%>" method="POST"> 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Blog</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-           <div class="form-group">
-    <label for="exampleFormControlTextarea2">Title</label>
-    <textarea name="title" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>           
-    <label for="exampleFormControlTextarea1">Content</label>
-    <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
-  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
-      </div>
-    </div>
-</form>    
-
-<div class="container">
-      <!-- Example row of columns -->
-          <div class="row">
-          <% for(var j=0;j<User.blog_title.length;j++){%>
-          <div class="col-md-4">
-          <h3><%= User.blog_title[j] %></h3>
-          <p><a class="btn btn-secondary" href="/users/<%= name %>/blog/<%= User.blog_title[j] %>" role="button">View details &raquo;</a></p>
-        </div>
-        <% } %>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; Travelogue 2017</p>
-      </footer>
-    </div> <!-- /container -->
-
-
-<% include partials/footer %>
+    <body>
+    <!-- navbar section -->
+    <section class="navabar-side">
+            <header>
+                    <ul class="nav-top">
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </header>
+        <navabar>
+        <ul class="nav-side">
+            <div><i class="fas font-awesome"></i></div>
+            <li><i class="fas fa-home"></i><a href="#">Home</a></li>
+            <li><i class="fas fa-user"></i><a href="#">My Account</a></li>
+            <li><i class="fab fa-reddit"></i><a href="#">My Blogs</a></li>
+            <li><i class="fas fa-plus-circle"></i><a href="#">Add New Blog</a></li>
+            <li><i class="fas fa-user-edit"></i><a href="#">Manage Blogs</a></li>
+        </ul>
+        </navabar>
+    </section>
+    </body>
+</html>
