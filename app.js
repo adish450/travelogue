@@ -56,8 +56,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 
 
 app.use(express.static('public'));
-app.set("view engine","ejs");
-app.use(express.static((__dirname + '/views/')));
+app.set("view engine", "ejs");
+app.use(express.static((__dirname + '/views')));
 
 
 //routes
@@ -143,7 +143,7 @@ app.get("/users/:name",isLoggedIn,function(req,res){
        if(err)
        res.redirect('/');
         else
-    res.render("profile",{name:name,User:User});
+    res.render("profile.ejs",{name:name,User:User});
     console.log(User);
     });
 });
