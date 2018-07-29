@@ -6,6 +6,7 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="/javascript/profile.js"></script>
     <link rel="stylesheet" href="/stylesheets/profile.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,14 +23,57 @@
                 </header>
         <navabar>
         <ul class="nav-side">
-            <div><i class="fas font-awesome"></i></div>
-            <li><i class="fas fa-home"></i><a href="#">Home</a></li>
-            <li><i class="fas fa-user"></i><a href="#">My Account</a></li>
-            <li><i class="fab fa-reddit"></i><a href="#">My Blogs</a></li>
-            <li><i class="fas fa-plus-circle"></i><a href="#">Add New Blog</a></li>
-            <li><i class="fas fa-user-edit"></i><a href="#">Manage Blogs</a></li>
+            <div>
+                <i class="fas font-awesome"></i>
+            </div>
+            <div>
+                <li><i class="fas fa-home"></i><a href="#">Home</a></li>
+                <li><i class="fas fa-user"></i><a href="#">My Account</a></li>
+                <li><i class="fab fa-reddit my-blogs"></i><a href="#">My Blogs</a></li>
+                <li><i class="fas fa-plus-circle"></i><a href="#">Add New Blog</a></li>
+                <li><i class="fas fa-user-edit"></i><a href="#">Manage Blogs</a></li>
+            </div>
         </ul>
         </navabar>
+    </section>
+    <!-- content section -->
+    <section>
+        <div class="main-content">
+            <div id="title" class="hide">
+                <h1>My Blogs</h1>
+            </div>
+            <div class="hide">
+                <h1 class="hide">Welcome <%= name%></h1>
+            </div>
+            <div class="hide">
+                <h2>Account Type : General User</h2>
+                <h2>Account Status : Active</h2>
+            </div>
+            <% for(var i=0;i<User.blog_title.length;i++){ %>
+                <% if(User.blog_title[i] != null) { %>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 blogs hide">
+                        <div class="col-md-5">
+                          <img src="/thumbnail.jpeg">
+                        </div>
+                        <div class="col-md-7 content">
+                         <h1>Title of the blog :<span><%= User.blog_title[i] %></span></h1>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+        <% if(User.blog_title.length == 0) { %>
+        <h1>You don't have any blogs !</h1>
+        <% } %>
+        <div class="right-nav">
+            <ul>
+              <% for(var i=0;i<User.blog_title.length;i++){ %>
+              <% if(User.blog_title[i] != null) { %>
+                <li><%=User.blog_title[i] %></li>
+            <% } %>
+            <% } %>
+            </ul>
+        </div>
     </section>
     </body>
 </html>
