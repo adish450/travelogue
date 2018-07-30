@@ -64,7 +64,7 @@ app.use(express.static((__dirname + '/views')));
 
 
 app.get("/Login",function(req,res){
-    res.render("login");
+    res.render("index");
     
 });
 
@@ -73,7 +73,7 @@ app.get("/Login",function(req,res){
 
 app.get("/Signup",function(req,res){
     
-    res.render("signup");
+    res.render("index");
     
 });
 

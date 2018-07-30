@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="/javascript/profile.js"></script>
     <link rel="stylesheet" href="/stylesheets/profile.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -18,7 +17,7 @@
     <section class="navabar-side">
             <header>
                     <ul class="nav-top">
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="/logout">Logout</a></li>
                     </ul>
                 </header>
         <navabar>
@@ -27,11 +26,11 @@
                 <i class="fas font-awesome"></i>
             </div>
             <div>
-                <li><i class="fas fa-home"></i><a href="#">Home</a></li>
-                <li><i class="fas fa-user"></i><a href="#">My Account</a></li>
-                <li><i class="fab fa-reddit my-blogs"></i><a href="#">My Blogs</a></li>
-                <li><i class="fas fa-plus-circle"></i><a href="#">Add New Blog</a></li>
-                <li><i class="fas fa-user-edit"></i><a href="#">Manage Blogs</a></li>
+                <li><i class="fas fa-home"></i><a href="#" id="home">Home</a></li>
+                <li><i class="fas fa-user"></i><a href="#" id="my-account">My Account</a></li>
+                <li><i class="fab fa-reddit my-blogs"></i><a href="#" id="my-blogs">My Blogs</a></li>
+                <li><i class="fas fa-plus-circle"></i><a href="#" id="add-new-blog">Add New Blog</a></li>
+                <li><i class="fas fa-user-edit"></i><a href="#" id="manage-blogs">Manage Blogs</a></li>
             </div>
         </ul>
         </navabar>
@@ -42,13 +41,20 @@
             <div id="title" class="hide">
                 <h1>My Blogs</h1>
             </div>
-            <div class="hide">
-                <h1 class="hide">Welcome <%= name%></h1>
+            <div class="hide" id="welcome">
+                <h1>Welcome <%= name%>!</h1>
             </div>
-            <div class="hide">
+            <div class="hide" id="status">
                 <h2>Account Type : General User</h2>
                 <h2>Account Status : Active</h2>
             </div>
+            <form action="/users/<%=name%>" method="POST" class="hide">
+                <div class="new-blog">
+                <textarea id="title"></textarea>
+                <textarea id="content"></textarea>
+                <input type="submit">
+            </div>
+            </form>
             <% for(var i=0;i<User.blog_title.length;i++){ %>
                 <% if(User.blog_title[i] != null) { %>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 blogs hide">
@@ -65,15 +71,7 @@
         <% if(User.blog_title.length == 0) { %>
         <h1>You don't have any blogs !</h1>
         <% } %>
-        <div class="right-nav">
-            <ul>
-              <% for(var i=0;i<User.blog_title.length;i++){ %>
-              <% if(User.blog_title[i] != null) { %>
-                <li><%=User.blog_title[i] %></li>
-            <% } %>
-            <% } %>
-            </ul>
-        </div>
     </section>
     </body>
+    <script src="/javascript/profile.js"></script>
 </html>
