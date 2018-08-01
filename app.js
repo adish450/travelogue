@@ -149,7 +149,7 @@ app.get("/users/:name",isLoggedIn,function(req,res){
 });
 
 
-app.get("/users/:name/blog/:blog_title",function(req,res){
+app.get("/users/:name/blogs/:blog_title",function(req,res){
     var name = req.params.name;
     var blog_title = req.params.blog_title;
     console.log(req.ip);
@@ -165,7 +165,6 @@ app.get("/users/:name/blog/:blog_title",function(req,res){
             }
             res.render("blog",{name:name,blog_title:blog_title,blog_content:User.blog_content[pos],User:User});
         }
-        
     });
     
 });
@@ -177,7 +176,8 @@ app.post("/users/:name",function(req,res){
         
         
         "blog_title": req.body.title,
-        "blog_content": req.body.content
+        "blog_content": req.body.content,
+        "createdDate": Date.now()
     }
     },function(err,blogs){
         if(err)
@@ -191,8 +191,7 @@ app.post("/users/:name",function(req,res){
 });
 
 app.delete("/users/:name",function(req,res){
-
-    
+    var name = req.params.name;
     User.update({username:req.params.name},{$pop:{
         
         

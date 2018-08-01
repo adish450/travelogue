@@ -1,6 +1,14 @@
-<% include partials/header %>
-<h1><%= blog_title %></h1>
-<div class="container-fluid">
-<p><%=  blog_content %></p>
-</div>
-<% include partials/footer %>
+<html>
+<head>
+    <title>My Blogs</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/blog.css">
+</head>
+<body>
+    <h1><%=blog_title%><%=User.createdDate%></h1>
+    <span></span>
+    <p><%=blog_content%></p>
+</body>
+</html>

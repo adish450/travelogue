@@ -12,10 +12,8 @@ var blogSchema = new mongoose.Schema({
     },
     createdDate : {
         type : Date,
-        default : Date.now
+        default : Date.now();
     }
-    
-    
 });
 
 module.exports = mongoose.model("blog",blogSchema);

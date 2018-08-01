@@ -9,6 +9,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
+    word-wrap: break-word;
 }
 
 a {
@@ -46,7 +47,7 @@ li {
     display: flex;
     justify-content: flex-end;
     background-color:#aaa;
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     width: 100%;
     height: 10vh;
@@ -75,10 +76,6 @@ li {
     margin-left: 5px;
 }
 
-@media(max-width:900px){
-    
-}
-
 .main-content {
     position: absolute;
     top:20%;
@@ -86,6 +83,8 @@ li {
     right:5%;
     max-width:100%;
     height:80vh;
+    word-wrap: break-word;
+    text-align:center;
 }
 
 .blogs {
@@ -105,39 +104,140 @@ li {
     padding:2.5%;
 }
 
+.content a {
+    font-family:'Montserrat';
+    font-weight:bold;
+    font-size:2vw;
+}
+
+button {
+    display:none;
+    width:8vw;
+    height:4vw;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    background-color:#FFB80A;
+    opacity:.9;
+    font-size:2vw;
+    font-weight:600;
+    text-align:center;
+    margin:10% auto;
+}
+
+button:hover {
+    background-color:#ff2323;
+}
 #title {
     position:fixed;
     background-color:#fff;
     width:100%;
     top:10vh;
-    z-index:2;
+    left:20%;
+    z-index:1;
     height:10vh;
     text-align:center;
 }
 
 #title h1 {
-    transform:translate(-10%);
-    font-size:2em;
+    font-size:2.5em;
     padding:5px;
-    vertical-align:central;
+    transform: translate(-10%);
 }
 
 #welcome h1 {
     width:100%;
     text-align:center;
-    font-size:2.5rem;
-    transform:translate(12%);
+    font-size:2.5em;
     position: absolute;
     top: 25%;
     font-weight:800;
 }
 
 #status{
-    width:100%;
+    max-width:100%;
     text-align:center;
-    font-size:1.5rem;
+    font-size:2.5em;
     position: absolute;
     top: 25%;
     left:20%;
     font-weight:600;
+}
+
+#status h2 {
+    font-size:.8em;
+}
+
+
+
+.new-blog {
+    position:absolute;
+    top:-12%;
+    left:0%;
+    text-align: left;
+    width:100%;
+    
+    
+}
+.new-blog textarea:first-of-type {
+    width:100%;
+    height:10vh;
+    margin:5px;
+    padding:2px;
+    
+}
+
+.new-blog textarea:nth-of-type(2) {
+    width:100%;
+    height:60vh;
+    margin:5px;
+    padding:2px;
+}
+
+input[type=submit] {
+    
+    width:10vw;
+    height:5vh;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    background-color:#FFB80A;
+    opacity:.9;
+    font-size:2vw;
+    font-weight:600;
+    
+}
+
+
+input[type=submit]:hover{
+    
+    opacity:1;
+    transform:translate(1px,1px);
+    background-color:#FFB80A;
+    
+}
+
+
+
+@media only screen and (max-width: 900px){
+    #title h1 {
+        font-size:1.5em;
+        padding:3px;
+        transform:translate(-10%);
+    }
+    
+    a {
+        font-size:12px;
+        font-weight:600;
+        letter-spacing:1px;
+    }
+    
+    #status h2 ,#welcome h1{
+        font-size:20px;
+    }
+    
+    #welcome h1{
+        font-size:30px;
+    }
+    
 }

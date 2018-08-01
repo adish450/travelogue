@@ -1,6 +1,7 @@
 body{
     margin:0;
     padding:0;
+    font-size:16px;
 }
 
 header{
@@ -17,23 +18,24 @@ section {
     display:flex;
     flex-direction:column;
     justify-content:center;
-    flex-wrap:wrap;
-    /*align-items:center;*/
+    flex-wrap:nowrap;
+    flex-basis:100%;
     color : white;
     background-color:#2274A5;
-    width :350px;
-    /*height:400px;*/
+    max-width :350px;
+    max-height:60vh;
+    word-break:break-all;
     position:absolute;
     right:8%;
     top: 15%;
     opacity:0.9;
-    padding:20px;
+    padding:10px;
     text-align:justify;
     border-radius:15px;
-    box-shadow:4px 4px #32936F ;
 }
 
-
+section>div {
+}
 .navbar{
     display:flex;
     justify-content:space-between;
@@ -106,4 +108,8 @@ footer {
 .nav {
     
 
+}
+
+@media only screen and (max-width:1000px){
+    
 }
