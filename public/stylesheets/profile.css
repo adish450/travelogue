@@ -46,7 +46,7 @@ li {
 .nav-top {
     display: flex;
     justify-content: flex-end;
-    background-color:#aaa;
+    background-color:crimson;
     z-index: 3;
     position: fixed;
     width: 100%;

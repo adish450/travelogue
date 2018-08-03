@@ -10,6 +10,8 @@ var express         =   require('express'),
     LocalStrategy = require('passport-local').Strategy,
     path    = require("path");
 
+
+
 var mongoClient = require("mongodb").MongoClient;
 mongoClient.connect("mongodb://adish:l65Jpls5PsSrC3tiwZEbb42seF5qN2YJevahvtCFGNgCxIAXcO5lEHS543DCAatwDChUQL5YGHLTyFljeGv27w%3D%3D@adish.documents.azure.com:10255/?ssl=true", function (err, client) {
   client.close();
@@ -190,24 +192,46 @@ app.post("/users/:name",function(req,res){
 
 });
 
-app.delete("/users/:name",function(req,res){
+app.delete("/users/:name/blogs/:blog_title",function(req,res){
     var name = req.params.name;
-    User.update({username:req.params.name},{$pop:{
-        
-        
-        "blog_title": req.body.title,
-        "blog_content": req.body.content
-    }
-    },function(err,blogs){
+    var blog = req.params.blog_title;
+     User.findOne({"username":name, "blog_title":blog},function(err,User){
+       if(err)
+       console.log(err);
+        else{
+            var pos = 0;
+            console.log(User.blog_title.length);
+            for(var i=0;i<User.blog_title.length;i++){
+                if(User.blog_title[i] === blog)
+                pos= i;
+            }
+            console.log(pos);
+            
+         User.update({},{ $pull: {
+        "blog_title": User.blog_title[pos],
+        "blog_content":User.blog_content[pos]
+    }},function(err,User){
         if(err)
-        console.log(err);        
+        console.log(err);
         else
         res.redirect("back");
+    }
+);
+    //     User.deleteOne({username:req.params.name},{$pop:{
+    //     "blog_title": User.blog_title[pos],
+    //     "blog_content":User.blog_content[pos]
+    // }
+    // },function(err,blogs){
+    //     if(err)
+    //     console.log(err);
         
         
+    // });
+        }
     });
     
 });    
+
 app.listen(process.env.PORT,process.env.IP,function(){
     
     console.log("Server is running !");

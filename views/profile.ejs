@@ -51,26 +51,22 @@
             <form action="/users/<%=name%>" method="POST" class="hide">
                 <div class="new-blog">
                     <h2>Title</h2>
-                    <textarea type="text" id="new-title" name="title"></textarea>
+                    <textarea type="text" id="new-title" name="title" required></textarea>
                     <h2>Content</h2>
-                    <textarea type="text" id="new-content" name="content"></textarea>
+                    <textarea type="text" id="new-content" name="content" required></textarea>
                     <input type="submit">
                 </div>
             </form>
             <% for(var i=0;i<User.blog_title.length;i++){ %>
-                <% if(User.blog_title[i] != null) { %>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 blogs hide">
                         <div class="col-md-5 col-sm-5 col-xs-6">
                           <img src="/thumbnail.jpeg">
                         </div>
                         <div class="col-md-7 col-sm-7 col-xs-6 content">
-                         <a href="/users/<%=name%>/blogs/<%=User.blog_title[i]%>">Title of the blog :<span><%= User.blog_title[i] %></span></a>
-                         <form action="/users/<%=name%>" method="post">
-                             <button>Delete</button>
-                         </form>
+                         <a href="/users/<%=name%>/blogs/<%=User.blog_title[i]%>">Title of the blog :<span><%= User.blog_title[i]%></span></a>
+                             <button data-id="/users/<%=name%>/blogs/<%=User.blog_title[i]%>">Delete</button>
                         </div>
                     </div>
-                <% } %>
             <% } %>
         </div>
         <% if(User.blog_title.length == 0) { %>
