@@ -1,38 +1,38 @@
 <html>
-    <head>
+
+<head>
     <title>Profile</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/stylesheets/profile.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
+</head>
 
-    <body>
+<body>
     <!-- navbar section -->
     <section class="navabar-side">
-            <header>
-                    <ul class="nav-top">
-                        <li><a href="/logout">Logout</a></li>
-                    </ul>
-                </header>
+        <header>
+            <ul class="nav-top">
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </header>
         <navabar>
-        <ul class="nav-side">
-            <div>
-                <i class="fas font-awesome"></i>
-            </div>
-            <div>
-                <li><i class="fas fa-home"></i><a href="#" id="home">Home</a></li>
-                <li><i class="fas fa-user"></i><a href="#" id="my-account">My Account</a></li>
-                <li><i class="fab fa-reddit my-blogs"></i><a href="#" id="my-blogs">My Blogs</a></li>
-                <li><i class="fas fa-plus-circle"></i><a href="#" id="add-new-blog">Add New Blog</a></li>
-                <li><i class="fas fa-user-edit"></i><a href="#" id="manage-blogs">Manage Blogs</a></li>
-            </div>
-        </ul>
+            <ul class="nav-side">
+                <div>
+                    <i class="fas font-awesome"></i>
+                </div>
+                <div>
+                    <li><i class="fas fa-home"></i><a href="#" id="home">Home</a></li>
+                    <li><i class="fas fa-user"></i><a href="#" id="my-account">My Account</a></li>
+                    <li><i class="fab fa-reddit my-blogs"></i><a href="#" id="my-blogs">My Blogs</a></li>
+                    <li><i class="fas fa-plus-circle"></i><a href="#" id="add-new-blog">Add New Blog</a></li>
+                    <li><i class="fas fa-user-edit"></i><a href="#" id="manage-blogs">Manage Blogs</a></li>
+                </div>
+            </ul>
         </navabar>
     </section>
     <!-- content section -->
@@ -42,7 +42,8 @@
                 <h1>My Blogs</h1>
             </div>
             <div class="hide" id="welcome">
-                <h1>Welcome <%= name%>!</h1>
+                <h1>Welcome
+                    <%= name%>!</h1>
             </div>
             <div class="hide" id="status">
                 <h2>Account Type : General User</h2>
@@ -58,21 +59,22 @@
                 </div>
             </form>
             <% for(var i=0;i<User.blog_title.length;i++){ %>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 blogs hide">
-                        <div class="col-md-5 col-sm-5 col-xs-6">
-                          <img src="/thumbnail.jpeg">
-                        </div>
-                        <div class="col-md-7 col-sm-7 col-xs-6 content">
-                         <a href="/users/<%=name%>/blogs/<%=User.blog_title[i]%>">Title of the blog :<span><%= User.blog_title[i]%></span></a>
-                             <button data-id="/users/<%=name%>/blogs/<%=User.blog_title[i]%>">Delete</button>
-                        </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 blogs hide">
+                    <div class="col-md-5 col-sm-5 col-xs-6">
+                        <img src="/thumbnail.jpeg">
                     </div>
-            <% } %>
+                    <div class="col-md-7 col-sm-7 col-xs-6 content">
+                        <a href="/users/<%=name%>/blogs/<%=User.blog_title[i]%>">Title of the blog :<span><%= User.blog_title[i]%></span></a>
+                        <button data-id="/users/<%=name%>/blogs/<%=User.blog_title[i]%>">Delete</button>
+                    </div>
+                </div>
+                <% } %>
         </div>
         <% if(User.blog_title.length == 0) { %>
-        <h1>You don't have any blogs !</h1>
-        <% } %>
+            <h1>You don't have any blogs !</h1>
+            <% } %>
     </section>
-    </body>
-    <script src="/javascript/profile.js"></script>
+</body>
+<script src="/javascript/profile.js"></script>
+
 </html>
