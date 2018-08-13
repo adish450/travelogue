@@ -8,12 +8,12 @@ body {
 }
 
 header {
-    background-image: url("https://preview.c9users.io/adishirfan17/blog/Webp.net-compress-image.jpg");
+    background-image: url("https://preview.c9users.io/adishirfan17/blog/views/architecture-blue-sky-cliff-248771.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100%;
-    opacity: .65;
+    opacity: .75;
 }
 
 
@@ -31,7 +31,8 @@ header {
     width:70%;
     margin-left:15%;
     opacity:.85;
-    max-width:60%;
+    max-width:80%;
+    /*margin-top:100vh;*/
 }
 
 
@@ -39,7 +40,7 @@ header {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    position: relative;
+    /*position:fixed;*/
 }
 
 a {
@@ -47,7 +48,10 @@ a {
     margin: 10px;
     text-decoration: none !important;
     font-size: 20px;
-    color: black;
+    color: #f8f9fa;
+    font-weight:600;
+    
+    
 }
 
 a:hover {
@@ -117,7 +121,7 @@ footer {
 }
 
 hr {
-    width: 35%;
+    width: 25%;
     color: #aaa;
     height: 2px;
     border-top: 3px solid rgba(0, 0, 0, .1);
@@ -128,7 +132,7 @@ hr {
 
 .middle-content i {
     font-size: 5vw;
-    color: #2e242c;
+    /*color: #e9ecef;*/
     width: 100%;
     margin: 2vw auto;
     text-align: center;
@@ -137,6 +141,7 @@ hr {
 .row h3 {
     text-align: center;
     margin-bottom: 2vw;
+    /*color:white;*/
 }
 
 .heading {
@@ -215,6 +220,7 @@ heading-nav {
 
 p {
     text-align:justify;
+    /*color:white;*/
 }
 
 .hide-extra {
@@ -233,7 +239,7 @@ p {
     }
     
     header {
-        height:80vh;
+        height:100vh;
     }
     
     .header-content {
@@ -257,8 +263,13 @@ p {
 
 .icon {
     text-align:center;    
-    color:black;
+    color:#ededed;
     margin-bottom:8%;
+}
+
+img {
+    width:50px;
+    height:50px;
 }
 
 @media only screen and (max-width:815px) {
@@ -277,7 +288,7 @@ p {
     }
     
     header {
-        height:40vh;
+        height:100vh;
     }
     
     /*.middle {*/
@@ -288,9 +299,8 @@ p {
         display:block;
         background-color:#d3d9dfcc;
         padding:5% 0;
-        
         /*margin:0 auto;*/
-        /*position:relative;*/
+        
     }
     
     .form-content {
@@ -299,7 +309,9 @@ p {
     
     .header {
         position:static;
-        margin:0 15px;
+        margin-top:100vh;
+        margin-left:auto;
+        margin-right:auto;
         width:auto;
         
     }
@@ -308,9 +320,80 @@ p {
     padding: 5px;
     margin: 5px;
     text-decoration: none !important;
-    font-size: 15px;
-    color: black;
-}
+    font-size: 18px;
+    color:#f8f9fa;
+    }
+    
+}   
+
+@media only screen and (max-width:400px) {
+    
+    header {
+        position:fixed;
+    }
+    .heading {
+        margin-top:25%;
+    }
+    
+    .heading h1 {
+        font-size:12vw;
+    }
+    
+    .heading h3 {
+        font-size:4.5vw;
+        text-shadow:.5px .5px #ececf4;
+        font-weight:600;
+    }
+    
+    .heading button {
+        font-size:3.5vw;
+    }
+    
+    .hide-extra {
+        margin:0 auto;
+        /*text-align:center;*/
+    }
+    
+    .form-content {
+        margin: 0 auto;
+    }
+    
+    .middle-content i {
+        font-size: 18vw;
+        
+    }
+    
+    #travelogue {
+        display:none;
+    }
+    
+    .navbar {
+        justify-content:center;
+        width:100%;
+    }
+    
+    .text-content {
+        margin:15px;
+        padding: 30px;
+        background-color: #38759d;
+        opacity: .9;
+        margin-bottom: 20px;
+        border-radius:15px;
+        
+    }
+    
+    p {
+        color:white;
+    }
+    
+    .row h3 {
+        color:white;
+    }
+    .middle-content i {
+        /*color:white;*/
+    }
 }    
+
+
 
     
