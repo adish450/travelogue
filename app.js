@@ -4,11 +4,17 @@ var express         =   require('express'),
     mongoose        =   require('mongoose'),
     User            =   require("./views/models/user"),
     passport        =   require('passport'),
-    flash           =   require('connect-flash'),
+    // flash           =   require('connect-flash'),
     morgan       = require('morgan'),
     cookieParser = require('cookie-parser'),
     LocalStrategy = require('passport-local').Strategy,
-    path    = require("path");
+    path    = require("path"),
+    flash = require('express-flash-messages'),
+    session = require('express-session'),
+    expressValidator=require('express-validator');
+    // sessionStore = new session.MemoryStore;
+
+
 
 
 
@@ -24,18 +30,13 @@ mongoose.set('debug',true);
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
+app.use(expressValidator()); // this line must be immediately after express.bodyParser()!
 
 
 // required for passport
 app.use(bodyParser.urlencoded({extended :true}));
 app.use(bodyParser.json());
-app.use(flash());
-
-
-
-
 
 app.use(require('express-session')({
     secret : "Adish",
@@ -44,6 +45,15 @@ app.use(require('express-session')({
     
 }));
 
+// set sessions and cookie parser
+app.use(cookieParser());
+app.use(session({
+  secret: process.env.SECRET, 
+  cookie: { maxAge: 60000 },
+  resave: false,    // forces the session to be saved back to the store
+  saveUninitialized: false  // dont save unmodified
+}));
+app.use(flash());
 app.use(passport.initialize()); 
 app.use(passport.session());
 
@@ -65,23 +75,28 @@ app.use(express.static((__dirname + '/views')));
 //routes
 
 
-app.get("/Login",function(req,res){
-    res.render("index");
+app.get("/login",function(req,res){
+    
+    res.render("index",{message:""});
     
 });
 
 
 
 
-app.get("/Signup",function(req,res){
+app.get("/signup",function(req,res){
     
-    res.render("index");
+    res.render("index",{message :""});
     
 });
 
 app.get("/",function(req,res){
-    res.render("index");
-    
+    // req.flash('success', 'This is a flash message using the express-flash module.');
+    // req.session.sessionFlash = {
+    //     type: 'success',
+    //     message: 'This is a flash message using custom middleware and express-session.'
+    // }
+    res.render("index",{message:""});
 });
 
 // we will use route middleware to verify this (the isLoggedIn function)
@@ -100,15 +115,32 @@ app.get("/logout",function(req,res){
 
 // process the signup form
 
-app.post('/Signup', function(req, res){
-	
-	
-
-	User.register(new User({firstname:req.body.firstname,lastname:req.body.lastname,email:req.body.email,gender:req.body.gender,username:req.body.username}),req.body.password,function(err,user){
-	    
+app.post('/signup', function(req, res){
+    
+    
+    req.checkBody("email", "Enter a valid email address.").isEmail();
+    req.checkBody("firstname", "Enter a first name.").isAlpha();
+	req.checkBody("lastname", "Enter a last name.").isAlpha();
+	req.checkBody("gender", "Please select the appropriate gender.").isEmpty();
+	req.checkBody("password", "Enter password").isAlpha();
+	var errors = req.validationErrors();
+	if(errors)
+	return errors;
+	else
+	User.findOne({$or:[{"username": req.body.username},{"email":req.body.email}]},function(err,user){
+	   // console.log(user.username);
+	   // console.log(user);
+	    if(User.username == req.body.username || User.email == req.body.email) {
+	    console.log(err);
+	   // res.render("index",{message:"Username Already Exists!"});
+	   // res.send(err);
+	    }
+	   //res.redirect("back",{message:"Username Already Exists!"});
+	    else {
+	    User.register(new User({firstname:req.body.firstname,lastname:req.body.lastname,email:req.body.email,gender:req.body.gender,username:req.body.username}),req.body.password,function(err,user){
 	    if(err){
 	        console.log(err);
-	        return res.render("signup");
+	        return res.send(err);
 	    }
 	    
 	    passport.authenticate("local")(req,res,function(){
@@ -119,6 +151,10 @@ app.post('/Signup', function(req, res){
 	    
 	    
 	});
+	    }
+	})
+
+	
 	
 });	
 	
@@ -127,13 +163,46 @@ app.post('/Signup', function(req, res){
 
 
 
-app.post('/login',
-  passport.authenticate('local'),
-  function(req, res) {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    res.redirect('/users/' + req.user.username);
-  });
+app.post('/login',function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) {
+      return next(err); // will generate a 500 error
+    }
+    // Generate a JSON response reflecting authentication status
+    if (! user) {
+        console.log(user);
+    //   return res.send({ success : false, message : 'authentication failed' });
+      res.render("index",{ message : "Username Or Password Incorrect !!"});
+    }
+    // ***********************************************************************
+    // "Note that when using a custom callback, it becomes the application's
+    // responsibility to establish a session (by calling req.login()) and send
+    // a response."
+    // Source: http://passportjs.org/docs
+    // ***********************************************************************
+    req.login(user, loginErr => {
+      if (loginErr) {
+        return next(loginErr);
+      }
+        res.redirect('/users/' + req.user.username);
+        //  res.redirect('/');
+    //   return res.render("",{ success : true, message : 'authentication succeeded' });
+    });      
+  })(req, res, next);
+});
+//   passport.authenticate('local'),
+//   function(req, res, next) {
+//     // If this function gets called, authentication was successful.
+//     // `req.user` contains the authenticated user.
+//     // successRedirect:'/users/',
+//     // failureRedirect:'/login',
+//     if(err){
+//     res.redirect('/login');
+//     }
+//     else
+//     res.redirect('/users/' + req.user.username);
+//     failureFlash : true ;
+//   });
     
     
     
@@ -232,6 +301,10 @@ app.delete("/users/:name/blogs/:blog_title",function(req,res){
     
 });    
 
+// app.use("*", (req,res) => {
+// 		res.sendFile(path + "404.html");
+// });
+
 app.listen(process.env.PORT,process.env.IP,function(){
     
     console.log("Server is running !");
@@ -252,3 +325,4 @@ function isLoggedIn(req, res, next){
     else
     res.redirect('/login');
 }
+

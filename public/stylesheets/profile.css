@@ -40,13 +40,13 @@ li {
     left:0;
     height:100vh;
     z-index: 2;
-    min-width: 90px;
+    min-width: 86px;
 }
 
 .nav-top {
     display: flex;
     justify-content: flex-end;
-    background-color:crimson;
+    background-color:#6b5156;
     z-index: 3;
     position: fixed;
     width: 100%;
@@ -241,3 +241,24 @@ input[type=submit]:hover{
     }
     
 }
+
+@media only screen and (max-width: 400px){
+    .new-blog textarea:first-of-type {
+        margin:2px;
+        padding:2px;
+    }
+    
+    .new-blog textarea:nth-of-type(2) {
+        margin:2px;
+        padding:2px;
+    }
+    
+    .new-blog {
+        left:4%;
+    }
+    
+    .nav-top {
+        height:8vh;
+    }
+}    
+    

@@ -8,12 +8,12 @@ body {
 }
 
 header {
-    background-image: url("https://preview.c9users.io/adishirfan17/blog/views/architecture-blue-sky-cliff-248771.jpg");
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)),url("https://preview.c9users.io/adishirfan17/blog/views/architecture-blue-sky-cliff-248771.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100%;
-    opacity: .75;
+    opacity: .85;
 }
 
 
@@ -26,9 +26,9 @@ header {
     background-color: #2274A5;
     word-break: break-all;
     position: absolute;
-    padding: 2em;
+    padding: 1.0em;
     border-radius: 15px;
-    width:70%;
+    width:62%;
     margin-left:15%;
     opacity:.85;
     max-width:80%;
@@ -155,20 +155,20 @@ hr {
 
 .heading h1 {
     font-size: 8vw;
-    color: #2274A5;
+    color: #f8f9fa;
     font-family: Montserrat;
     letter-spacing: 1.5px;
     font-weight: 800;
-    text-shadow: .8px .8px #c9d8e2;
+    text-shadow: .8px .8px #f8f9fa;
 }
 
 .heading h3 {
     font-size: 2.2vw;
-    color: #1d2c42    ;
+    color: #f8f9fa;
     font-family: Montserrat;
     letter-spacing: 1px;
     font-weight: 600;
-    text-shadow: 1px 1px #1d2c42;
+    text-shadow: 1px 1px #f8f9fa;
     text-align:left;
 }
 
@@ -225,6 +225,10 @@ p {
 
 .hide-extra {
     display:none;
+}
+
+strong {
+    margin:5px;
 }
 @media only screen and (max-width:1000px) {
     
@@ -328,6 +332,9 @@ img {
 
 @media only screen and (max-width:400px) {
     
+    .header {
+        max-width:82%;
+    }
     header {
         position:fixed;
     }
@@ -341,7 +348,7 @@ img {
     
     .heading h3 {
         font-size:4.5vw;
-        text-shadow:.5px .5px #ececf4;
+        text-shadow:.5px .5px #f8f9fa;
         font-weight:600;
     }
     
@@ -394,6 +401,11 @@ img {
     }
 }    
 
+#message {
+    /*color:red;*/
+    font-size:14px;
+    word-break:break-all;
+}
 
 
     
