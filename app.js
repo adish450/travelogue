@@ -169,10 +169,10 @@ app.post('/login',function(req, res, next) {
       return next(err); // will generate a 500 error
     }
     // Generate a JSON response reflecting authentication status
-    if (! user) {
+    if (!user) {
         console.log(user);
     //   return res.send({ success : false, message : 'authentication failed' });
-      res.render("index",{ message : "Username Or Password Incorrect !!"});
+      return res.render("index",{ message : "Username Or Password Incorrect !!"});
     }
     // ***********************************************************************
     // "Note that when using a custom callback, it becomes the application's

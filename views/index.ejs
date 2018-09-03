@@ -51,11 +51,11 @@
             <div class="login" id="1">
               <div class="form-group">
                 <label for="username" style="color:white;">Username</label>
-                <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+                <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" required>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1" style="color:white;">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
               </div>
               <button type="submit" id="btn" class="btn btn-primary">Submit</button>
               <% if ( message.length > 0 ) { %>
@@ -71,10 +71,10 @@
                     <label for="Name">Name</label>
                     <div class="form-row">
                       <div class="col">
-                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First name">
+                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First name" required>
                       </div>
                       <div class="col">
-                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last name">
+                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last name" required>
                       </div>
                     </div>
                     <div class="form-group" id="username">
@@ -145,10 +145,10 @@
                     <label for="Name">Name</label>
                     <div class="form-row">
                       <div class="col">
-                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First name">
+                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First name" required>
                       </div>
                       <div class="col">
-                        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last name">
+                        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last name" required>
                       </div>
                     </div>
                     <div class="form-group" id="username">
