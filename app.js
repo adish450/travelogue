@@ -118,15 +118,15 @@ app.get("/logout",function(req,res){
 app.post('/signup', function(req, res){
     
     
-    req.checkBody("email", "Enter a valid email address.").isEmail();
-    req.checkBody("firstname", "Enter a first name.").isAlpha();
-	req.checkBody("lastname", "Enter a last name.").isAlpha();
-	req.checkBody("gender", "Please select the appropriate gender.").isEmpty();
-	req.checkBody("password", "Enter password").isAlpha();
-	var errors = req.validationErrors();
-	if(errors)
-	return errors;
-	else
+//     req.checkBody("email", "Enter a valid email address.").isEmail();
+//     req.checkBody("firstname", "Enter a first name.").isAlpha();
+// 	req.checkBody("lastname", "Enter a last name.").isAlpha();
+// 	req.checkBody("gender", "Please select the appropriate gender.").isEmpty();
+// 	req.checkBody("password", "Enter password").isAlpha();
+// 	var errors = req.validationErrors();
+// 	if(errors)
+// 	return errors;
+// 	else
 	User.findOne({$or:[{"username": req.body.username},{"email":req.body.email}]},function(err,user){
 	   // console.log(user.username);
 	   // console.log(user);
