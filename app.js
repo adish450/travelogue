@@ -152,7 +152,7 @@ app.post('/signup', function(req, res){
 	    
 	});
 	    }
-	})
+	});
 
 	
 	
@@ -264,6 +264,7 @@ app.post("/users/:name",function(req,res){
 app.delete("/users/:name/blogs/:blog_title",function(req,res){
     var name = req.params.name;
     var blog = req.params.blog_title;
+    console.log(name,blog);
      User.findOne({"username":name, "blog_title":blog},function(err,User){
        if(err)
        console.log(err);
@@ -276,28 +277,27 @@ app.delete("/users/:name/blogs/:blog_title",function(req,res){
             }
             console.log(pos);
             
-         User.update({},{ $pull: {
+            console.log(User.blog_title);
+            console.log(User.blog_title[2]);
+            
+            //User.update({"username":name}, {$unset : {"User.blog_title.2": 1}});
+            //User.update({"username":name}, {$pull : {"User.blog_title": null}});
+            var t = User.blog_title[2];
+            User.update({"username" : name}, {$pop: {"User.blog_title": t}}).then(function(){console.log("complete"+User.blog_title)}).catch(function(e){console.log(e)});
+            
+    /**     User.update({"username":name},{ $pull: {
         "blog_title": User.blog_title[pos],
         "blog_content":User.blog_content[pos]
     }},function(err,User){
         if(err)
         console.log(err);
-        else
-        res.redirect("back");
+        // else
+        // res.redirect("back");
     }
-);
-    //     User.deleteOne({username:req.params.name},{$pop:{
-    //     "blog_title": User.blog_title[pos],
-    //     "blog_content":User.blog_content[pos]
-    // }
-    // },function(err,blogs){
-    //     if(err)
-    //     console.log(err);
-        
-        
-    // });
+); **/
+    
         }
-    });
+    }); 
     
 });    
 

@@ -39,11 +39,13 @@ manageblogs.addEventListener("click", function() {
     var btn = document.querySelector("button");
 
     btn.addEventListener("click", function() {
+        
+        
         $.ajax({
                 type: 'DELETE',
                 url: $('button').attr("data-id"),
             })
-            .done(function() {
+            .done(function(data) {
                 console.log('success');
             })
             .fail(function(err) {
@@ -51,7 +53,7 @@ manageblogs.addEventListener("click", function() {
             })
     })
 })
-
+ 
 $(document).ready(function() {
 
     if ($(window).width() <= 900) {
