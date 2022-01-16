@@ -19,19 +19,19 @@ var express         =   require('express'),
 
 
 var mongoClient = require("mongodb").MongoClient;
-mongoClient.connect("mongodb://adish:l65Jpls5PsSrC3tiwZEbb42seF5qN2YJevahvtCFGNgCxIAXcO5lEHS543DCAatwDChUQL5YGHLTyFljeGv27w%3D%3D@adish.documents.azure.com:10255/?ssl=true", function (err, client) {
+mongoClient.connect("mongodb+srv://adish450:adish450@cluster0.ng1ee.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", function (err, client) {
   client.close();
 });
 
 //mongoose.connect("mongodb://localhost/travelogue");
-mongoose.connect("mongodb://adish:l65Jpls5PsSrC3tiwZEbb42seF5qN2YJevahvtCFGNgCxIAXcO5lEHS543DCAatwDChUQL5YGHLTyFljeGv27w%3D%3D@adish.documents.azure.com:10255/?ssl=true");
+mongoose.connect("mongodb+srv://adish450:adish450@cluster0.ng1ee.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 mongoose.set('debug',true);
 
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(bodyParser()); // get information from html forms
-app.use(expressValidator()); // this line must be immediately after express.bodyParser()!
+//app.use(expressValidator()); // this line must be immediately after express.bodyParser()!
 
 
 // required for passport
@@ -73,7 +73,6 @@ app.use(express.static((__dirname + '/views')));
 
 
 //routes
-
 
 app.get("/login",function(req,res){
     
