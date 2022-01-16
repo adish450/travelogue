@@ -18,8 +18,12 @@ var express         =   require('express'),
 
 
 
-var mongoClient = require("mongodb").MongoClient;
-mongoClient.connect("mongodb+srv://adish450:adish450@cluster0.ng1ee.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", function (err, client) {
+    const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://adish450:adish450@cluster0.ng1ee.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
   client.close();
 });
 
@@ -324,4 +328,6 @@ function isLoggedIn(req, res, next){
     else
     res.redirect('/login');
 }
+
+app.listen(3000, '127.0.0.1');
 
