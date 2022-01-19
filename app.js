@@ -330,5 +330,5 @@ function isLoggedIn(req, res, next){
 }
 
 // Debug 
-//app.listen(3000, '127.0.0.1');
+app.listen(3000, '127.0.0.1');
 
